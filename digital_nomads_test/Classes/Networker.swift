@@ -18,23 +18,24 @@ class Networker {
     
     typealias FailureCompletion = (Error) -> Void
     
-    private var isLogEnable = false
+    private var isLogEnable = true
     
     private let queue = DispatchQueue(label: "com.test.request",
                                       qos: .default,
                                       attributes: .concurrent)
     
-    func sendRequest<T: JSONDecodable>(urlRequest: URLRequestConvertible, completion: @escaping (T?, Error?) -> Void) {
+    func sendRequest<T: JSONDecodable>(_ urlRequest: Router,
+                                       success: @escaping (T) -> Void,
+                                       failure: ((Error?) -> Void)? = nil) {
         request(urlRequest).validate().responseJSON { (response) in
             self.logResponse(response)
             switch response.result {
             case .success(let data):
                 let json = JSON(data)
                 let object = T(from: json)
-                completion(object, nil)
+                success(object!)
             case .failure(let error):
-                completion(nil, error)
-                print(error.localizedDescription)
+                failure?(error)
             }
         }
     }

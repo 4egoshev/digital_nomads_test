@@ -1,0 +1,73 @@
+PODS:
+  - Alamofire (4.8.2)
+  - AlamofireImage (3.5.2):
+    - Alamofire (~> 4.8)
+  - ErrorDispatcher/Alert (0.1.8)
+  - ErrorDispatcher/Core (0.1.8):
+    - ErrorDispatcher/Alert
+  - ErrorDispatcher/ReactiveSwift (0.1.8):
+    - ErrorDispatcher/Core
+    - ReactiveSwift (~> 5.0.0)
+    - Result (~> 4.1)
+  - ReactiveCocoa (9.0.0):
+    - ReactiveSwift (~> 5.0)
+  - ReactiveSwift (5.0.1):
+    - Result (~> 4.1)
+  - Realm (3.18.0):
+    - Realm/Headers (= 3.18.0)
+  - Realm/Headers (3.18.0)
+  - RealmSwift (3.18.0):
+    - Realm (= 3.18.0)
+  - Result (4.1.0)
+  - SwiftUtilites (0.1.12):
+    - SwiftUtilites/Classes (= 0.1.12)
+    - SwiftUtilites/Foundation (= 0.1.12)
+    - SwiftUtilites/Reactive (= 0.1.12)
+    - SwiftUtilites/UIKit (= 0.1.12)
+  - SwiftUtilites/Classes (0.1.12)
+  - SwiftUtilites/Foundation (0.1.12)
+  - SwiftUtilites/Reactive (0.1.12):
+    - ReactiveCocoa (~> 9.0.0)
+    - ReactiveSwift (~> 5.0.0)
+    - Result (~> 4.1)
+  - SwiftUtilites/UIKit (0.1.12)
+  - SwiftyJSON (4.3.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.8.1)
+  - AlamofireImage (~> 3.5)
+  - ErrorDispatcher/ReactiveSwift (~> 0.1.5)
+  - ReactiveCocoa (~> 9.0)
+  - ReactiveSwift (~> 5.0)
+  - RealmSwift (~> 3.18.0)
+  - SwiftUtilites (~> 0.1.9)
+  - SwiftyJSON (~> 4.0)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AlamofireImage
+    - ErrorDispatcher
+    - ReactiveCocoa
+    - ReactiveSwift
+    - Realm
+    - RealmSwift
+    - Result
+    - SwiftUtilites
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
+  ErrorDispatcher: 563e16ac055591f24aff7b9507a40e9f494a871c
+  ReactiveCocoa: 29709cf0cc7502ddd04a51220e10ee0336d8bec8
+  ReactiveSwift: cac20a5bbe560c5806bd29c0fccf90d03b996ac1
+  Realm: 7b3d04740facf45e958a514b466a32b04f1113d6
+  RealmSwift: c817b5f374668cf08f649afb05f55d92a787649c
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  SwiftUtilites: ba5b3199c138e07585a2e6b2f9e3e7721945f97f
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+
+PODFILE CHECKSUM: 098f3aa2cb88c49fe1d86094348a448822494f4e
+
+COCOAPODS: 1.9.0.beta.2

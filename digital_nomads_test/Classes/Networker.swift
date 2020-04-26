@@ -10,7 +10,7 @@ import Alamofire
 import SwiftyJSON
 
 protocol JSONDecodable {
-    init?(from json: JSON?)
+    init(json: JSON)
 }
 
 class Networker {
@@ -32,8 +32,8 @@ class Networker {
             switch response.result {
             case .success(let data):
                 let json = JSON(data)
-                let object = T(from: json)
-                success(object!)
+                let object = T(json: json)
+                success(object)
             case .failure(let error):
                 failure?(error)
             }

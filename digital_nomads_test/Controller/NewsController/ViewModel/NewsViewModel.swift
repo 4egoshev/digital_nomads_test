@@ -28,8 +28,9 @@ extension NewsViewModel {
 //MARK: - Request
 private extension NewsViewModel {
     func request() {
-        Networker.shared.sendRequest(.getNews, success: { [weak self] (response: News) in
-            self?.news.append(response)
+        let request: Router = .getNews(theame: "android", date: Date(), page: 1)
+        Networker.shared.sendRequest(request, success: { [weak self] (response: Articles<News>) in
+            self?.news.append(contentsOf: response.items)
         }) { (error) in
             print(error?.localizedDescription ?? "")
         }

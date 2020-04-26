@@ -8,8 +8,37 @@
 
 import SwiftyJSON
 
+struct Articles<T: JSONDecodable>: JSONDecodable {
+    var items: [T] = []
+    
+    init(json: JSON) {
+        if let articles = json["articles"].array {
+            articles.forEach { self.items.append(T(json: $0)) }
+        }
+    }
+}
+
 struct News: JSONDecodable {
-    init?(from json: JSON?) {
+    let title: String?
+    let description: String?
+    let author: String?
+    let content: String?
+    var date: Date? = nil
+    var url: URL? = nil
+    var imageUrl: URL? = nil
+    
+    init(json: JSON) {
+        self.title = json["title"].string
+        self.description = json["description"].string
+        self.author = json["author"].string
+        self.content = json["content"].string
+        self.date = Utilitis.createDate(from: json["publishedAt"].string)
         
+        if let urlString = json["url"].string {
+            self.url = URL(string: urlString)
+        }
+        if let urlString = json["urlToImage"].string {
+            self.imageUrl = URL(string: urlString)
+        }
     }
 }

@@ -19,6 +19,8 @@
 		07F4CC202455F0070040B041 /* Networker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F4CC1F2455F0070040B041 /* Networker.swift */; };
 		07F4CC232455F2E20040B041 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F4CC222455F2E20040B041 /* News.swift */; };
 		07F4CC252455F3E20040B041 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F4CC242455F3E20040B041 /* Router.swift */; };
+		07F4CC27245608ED0040B041 /* Array+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F4CC26245608EC0040B041 /* Array+Extentions.swift */; };
+		07F4CC2B24560BA90040B041 /* Utilitis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F4CC2A24560BA90040B041 /* Utilitis.swift */; };
 		5B84AD716A7A30845DCBBA5A /* Pods_digital_nomads_test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 483259FCAB479BFD6772920B /* Pods_digital_nomads_test.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +39,8 @@
 		07F4CC1F2455F0070040B041 /* Networker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networker.swift; sourceTree = "<group>"; };
 		07F4CC222455F2E20040B041 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		07F4CC242455F3E20040B041 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		07F4CC26245608EC0040B041 /* Array+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extentions.swift"; sourceTree = "<group>"; };
+		07F4CC2A24560BA90040B041 /* Utilitis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilitis.swift; sourceTree = "<group>"; };
 		3D3055ADAF466182B14F74AD /* Pods-digital_nomads_test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-digital_nomads_test.debug.xcconfig"; path = "Target Support Files/Pods-digital_nomads_test/Pods-digital_nomads_test.debug.xcconfig"; sourceTree = "<group>"; };
 		483259FCAB479BFD6772920B /* Pods_digital_nomads_test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_digital_nomads_test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		524C55055D7A91ACDF5B796C /* Pods-digital_nomads_test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-digital_nomads_test.release.xcconfig"; path = "Target Support Files/Pods-digital_nomads_test/Pods-digital_nomads_test.release.xcconfig"; sourceTree = "<group>"; };
@@ -76,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				07F4CBF22455E3F70040B041 /* AppDelegate.swift */,
+				07F4CC2924560B9B0040B041 /* Utilitis */,
 				07F4CC212455F2D20040B041 /* Model */,
 				07F4CC0E2455E6C90040B041 /* Classes */,
 				07F4CC0C2455E67F0040B041 /* Controller */,
@@ -154,6 +159,23 @@
 				07F4CC222455F2E20040B041 /* News.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		07F4CC28245608FE0040B041 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				07F4CC26245608EC0040B041 /* Array+Extentions.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
+		07F4CC2924560B9B0040B041 /* Utilitis */ = {
+			isa = PBXGroup;
+			children = (
+				07F4CC2A24560BA90040B041 /* Utilitis.swift */,
+				07F4CC28245608FE0040B041 /* Extentions */,
+			);
+			path = Utilitis;
 			sourceTree = "<group>";
 		};
 		7AC893C024239763C8287869 /* Frameworks */ = {
@@ -294,9 +316,11 @@
 				07F4CC102455E6E20040B041 /* AppFlowCoordinator.swift in Sources */,
 				07F4CC252455F3E20040B041 /* Router.swift in Sources */,
 				07F4CC172455E9380040B041 /* BaseController.swift in Sources */,
+				07F4CC27245608ED0040B041 /* Array+Extentions.swift in Sources */,
 				07F4CBF32455E3F70040B041 /* AppDelegate.swift in Sources */,
 				07F4CC202455F0070040B041 /* Networker.swift in Sources */,
 				07F4CC1E2455E9AA0040B041 /* BaseViewModel.swift in Sources */,
+				07F4CC2B24560BA90040B041 /* Utilitis.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

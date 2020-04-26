@@ -16,7 +16,7 @@ enum Router: URLRequestConvertible {
         return host + "/v2"
     }
     
-    case getNews
+    case getNews(theame: String, date: Date, page: Int)
     
     private var methodPath: String {
         switch self {
@@ -41,12 +41,12 @@ enum Router: URLRequestConvertible {
     
     private var parameters: Parameters? {
         switch self {
-        case .getNews:
-            return ["q"      : "android",
-                    "from"   : "2020-03-25",
+        case .getNews(let theame, let date, let page):
+            return ["q"      : theame,
+                    "from"   : "2020-04-25",
                     "sortBy" : "publishedAt",
                     "apiKey" : "a3d97a3a99c44160a7265905c58c2c7d",
-                    "page"   : "1"]
+                    "page"   : "\(page)"]
         }
     }
     

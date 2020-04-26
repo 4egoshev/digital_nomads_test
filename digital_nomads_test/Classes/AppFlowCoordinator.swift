@@ -17,7 +17,8 @@ class AppFlowCoordinator {
     
     func start() {
         window.makeKeyAndVisible()
-        let controller = NewsController()
+        let viewModel = NewsViewModel()
+        let controller = NewsController(viewModel: viewModel)
         window.rootViewController = UINavigationController(rootViewController: controller)
     }
 }

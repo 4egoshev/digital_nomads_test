@@ -13,6 +13,9 @@
 		07F4CC0A2455E62C0040B041 /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F4CC082455E62C0040B041 /* NewsController.swift */; };
 		07F4CC0B2455E62C0040B041 /* NewsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07F4CC092455E62C0040B041 /* NewsController.xib */; };
 		07F4CC102455E6E20040B041 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F4CC0F2455E6E20040B041 /* AppFlowCoordinator.swift */; };
+		07F4CC172455E9380040B041 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F4CC152455E9380040B041 /* BaseController.swift */; };
+		07F4CC1C2455E9840040B041 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F4CC1B2455E9840040B041 /* NewsViewModel.swift */; };
+		07F4CC1E2455E9AA0040B041 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F4CC1D2455E9AA0040B041 /* BaseViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		07F4CC082455E62C0040B041 /* NewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsController.swift; sourceTree = "<group>"; };
 		07F4CC092455E62C0040B041 /* NewsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsController.xib; sourceTree = "<group>"; };
 		07F4CC0F2455E6E20040B041 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
+		07F4CC152455E9380040B041 /* BaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
+		07F4CC1B2455E9840040B041 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
+		07F4CC1D2455E9AA0040B041 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,8 +73,8 @@
 		07F4CC0C2455E67F0040B041 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				07F4CC082455E62C0040B041 /* NewsController.swift */,
-				07F4CC092455E62C0040B041 /* NewsController.xib */,
+				07F4CC142455E9150040B041 /* BaseController */,
+				07F4CC192455E95E0040B041 /* NewsController */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -89,6 +95,41 @@
 				07F4CC0F2455E6E20040B041 /* AppFlowCoordinator.swift */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		07F4CC132455E9020040B041 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				07F4CC1D2455E9AA0040B041 /* BaseViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		07F4CC142455E9150040B041 /* BaseController */ = {
+			isa = PBXGroup;
+			children = (
+				07F4CC132455E9020040B041 /* ViewModel */,
+				07F4CC152455E9380040B041 /* BaseController.swift */,
+			);
+			path = BaseController;
+			sourceTree = "<group>";
+		};
+		07F4CC192455E95E0040B041 /* NewsController */ = {
+			isa = PBXGroup;
+			children = (
+				07F4CC1A2455E96C0040B041 /* ViewModel */,
+				07F4CC082455E62C0040B041 /* NewsController.swift */,
+				07F4CC092455E62C0040B041 /* NewsController.xib */,
+			);
+			path = NewsController;
+			sourceTree = "<group>";
+		};
+		07F4CC1A2455E96C0040B041 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				07F4CC1B2455E9840040B041 /* NewsViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,8 +204,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				07F4CC0A2455E62C0040B041 /* NewsController.swift in Sources */,
+				07F4CC1C2455E9840040B041 /* NewsViewModel.swift in Sources */,
 				07F4CC102455E6E20040B041 /* AppFlowCoordinator.swift in Sources */,
+				07F4CC172455E9380040B041 /* BaseController.swift in Sources */,
 				07F4CBF32455E3F70040B041 /* AppDelegate.swift in Sources */,
+				07F4CC1E2455E9AA0040B041 /* BaseViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

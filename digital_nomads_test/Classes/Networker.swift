@@ -18,7 +18,7 @@ class Networker {
     
     typealias FailureCompletion = (Error) -> Void
     
-    private var isLogEnable = true
+    private var isLogEnable = false
     
     private let queue = DispatchQueue(label: "com.test.request",
                                       qos: .default,
@@ -27,7 +27,7 @@ class Networker {
     func sendRequest<T: JSONDecodable>(_ urlRequest: Router,
                                        success: @escaping (T) -> Void,
                                        failure: ((Error?) -> Void)? = nil) {
-        request(urlRequest).validate().responseJSON { (response) in
+        request(urlRequest).validate().responseJSON(queue: queue, options: .allowFragments, completionHandler: { (response) in
             self.logResponse(response)
             switch response.result {
             case .success(let data):
@@ -37,7 +37,7 @@ class Networker {
             case .failure(let error):
                 failure?(error)
             }
-        }
+        })
     }
 
     //MARK: - Logs

@@ -2,11 +2,14 @@
 //  NewsController.swift
 //  digital_nomads_test
 //
-//  Created by Александр Чегошев on 26.04.2020.
+//  Created by Александр Чегошев on 27.04.2020.
 //  Copyright © 2020 Aleksandr Chegoshev. All rights reserved.
 //
 
 import UIKit
+import SwiftUtilites
+import ReactiveCocoa
+import ReactiveSwift
 
 class NewsController: BaseController {
 
@@ -26,23 +29,30 @@ class NewsController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        bind()
+    }
+    
+    private func bind() {
+        tableView.reactive.reloadData <~ viewModel.reloadTableView
     }
 }
 
 //MARK: - Setup
 private extension NewsController {
     func setupTableView() {
-        
+        tableView.registerNib(for: NewsCell.self)
     }
 }
 
 //MARK: - UITableViewDataSource
 extension NewsController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return viewModel.numberOfRows(in: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueCell(cellClass: NewsCell.self, for: indexPath)
+        cell.model = viewModel.cellModel(at: indexPath)
+        return cell
     }
 }

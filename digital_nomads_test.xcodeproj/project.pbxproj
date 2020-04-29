@@ -11,6 +11,8 @@
 		072FA25C2456167000F8DEB2 /* NewsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 072FA25A2456167000F8DEB2 /* NewsController.xib */; };
 		072FA2602456174F00F8DEB2 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072FA25E2456174F00F8DEB2 /* NewsCell.swift */; };
 		072FA2612456174F00F8DEB2 /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 072FA25F2456174F00F8DEB2 /* NewsCell.xib */; };
+		07AA03FD2459B37D00E44750 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AA03FC2459B37D00E44750 /* Constant.swift */; };
+		07AA03FF2459B4DB00E44750 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AA03FE2459B4DB00E44750 /* Image.swift */; };
 		07F4CBF32455E3F70040B041 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F4CBF22455E3F70040B041 /* AppDelegate.swift */; };
 		07F4CBFC2455E3F80040B041 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07F4CBFB2455E3F80040B041 /* Assets.xcassets */; };
 		07F4CBFF2455E3F80040B041 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07F4CBFD2455E3F80040B041 /* LaunchScreen.storyboard */; };
@@ -20,7 +22,7 @@
 		07F4CC1E2455E9AA0040B041 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F4CC1D2455E9AA0040B041 /* BaseViewModel.swift */; };
 		07F4CC202455F0070040B041 /* Networker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F4CC1F2455F0070040B041 /* Networker.swift */; };
 		07F4CC232455F2E20040B041 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F4CC222455F2E20040B041 /* News.swift */; };
-		07F4CC252455F3E20040B041 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F4CC242455F3E20040B041 /* Router.swift */; };
+		07F4CC252455F3E20040B041 /* NewsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F4CC242455F3E20040B041 /* NewsRouter.swift */; };
 		07F4CC27245608ED0040B041 /* Array+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F4CC26245608EC0040B041 /* Array+Extentions.swift */; };
 		07F4CC2B24560BA90040B041 /* Utilitis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F4CC2A24560BA90040B041 /* Utilitis.swift */; };
 		07FB8759245614E200414EC6 /* Pods_digital_nomads_test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FB8758245614E200414EC6 /* Pods_digital_nomads_test.framework */; };
@@ -46,6 +48,8 @@
 		072FA25A2456167000F8DEB2 /* NewsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsController.xib; sourceTree = "<group>"; };
 		072FA25E2456174F00F8DEB2 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		072FA25F2456174F00F8DEB2 /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
+		07AA03FC2459B37D00E44750 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		07AA03FE2459B4DB00E44750 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		07AFDFEE245611CB0098185C /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07AFDFF0245611CB0098185C /* AlamofireImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlamofireImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07AFDFF2245611CB0098185C /* ErrorDispatcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ErrorDispatcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,7 +72,7 @@
 		07F4CC1D2455E9AA0040B041 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		07F4CC1F2455F0070040B041 /* Networker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networker.swift; sourceTree = "<group>"; };
 		07F4CC222455F2E20040B041 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
-		07F4CC242455F3E20040B041 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		07F4CC242455F3E20040B041 /* NewsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRouter.swift; sourceTree = "<group>"; };
 		07F4CC26245608EC0040B041 /* Array+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extentions.swift"; sourceTree = "<group>"; };
 		07F4CC2A24560BA90040B041 /* Utilitis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilitis.swift; sourceTree = "<group>"; };
 		07FB8758245614E200414EC6 /* Pods_digital_nomads_test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_digital_nomads_test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,7 +157,7 @@
 			children = (
 				07F4CC0F2455E6E20040B041 /* AppFlowCoordinator.swift */,
 				07F4CC1F2455F0070040B041 /* Networker.swift */,
-				07F4CC242455F3E20040B041 /* Router.swift */,
+				07F4CC242455F3E20040B041 /* NewsRouter.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -214,6 +218,8 @@
 			isa = PBXGroup;
 			children = (
 				07F4CC2A24560BA90040B041 /* Utilitis.swift */,
+				07AA03FC2459B37D00E44750 /* Constant.swift */,
+				07AA03FE2459B4DB00E44750 /* Image.swift */,
 				07F4CC28245608FE0040B041 /* Extentions */,
 			);
 			path = Utilitis;
@@ -369,9 +375,11 @@
 				072FA25B2456167000F8DEB2 /* NewsController.swift in Sources */,
 				07F4CC232455F2E20040B041 /* News.swift in Sources */,
 				07F4CC102455E6E20040B041 /* AppFlowCoordinator.swift in Sources */,
-				07F4CC252455F3E20040B041 /* Router.swift in Sources */,
+				07F4CC252455F3E20040B041 /* NewsRouter.swift in Sources */,
 				07F4CC172455E9380040B041 /* BaseController.swift in Sources */,
 				07F4CC27245608ED0040B041 /* Array+Extentions.swift in Sources */,
+				07AA03FF2459B4DB00E44750 /* Image.swift in Sources */,
+				07AA03FD2459B37D00E44750 /* Constant.swift in Sources */,
 				07F4CBF32455E3F70040B041 /* AppDelegate.swift in Sources */,
 				07F4CC202455F0070040B041 /* Networker.swift in Sources */,
 				07F4CC1E2455E9AA0040B041 /* BaseViewModel.swift in Sources */,

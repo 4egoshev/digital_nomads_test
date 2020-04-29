@@ -1,5 +1,5 @@
 //
-//  Router.swift
+//  NewsRouter.swift
 //  digital_nomads_test
 //
 //  Created by Александр Чегошев on 26.04.2020.
@@ -10,13 +10,13 @@ import Alamofire
 
 fileprivate let host = "https://newsapi.org"
 
-enum Router: URLRequestConvertible {
+enum NewsRouter: URLRequestConvertible {
 
     private var basePath: String {
         return host + "/v2"
     }
     
-    case getNews(theame: String, date: Date, page: Int)
+    case getNews(theame: String, date: Date = Date(), page: Int)
     
     private var methodPath: String {
         switch self {
@@ -42,11 +42,7 @@ enum Router: URLRequestConvertible {
     private var parameters: Parameters? {
         switch self {
         case .getNews(let theame, let date, let page):
-            return ["q"      : theame,
-                    "from"   : "2020-04-25",
-                    "sortBy" : "publishedAt",
-                    "apiKey" : "a3d97a3a99c44160a7265905c58c2c7d",
-                    "page"   : "\(page)"]
+            return News.serializeJSON(theame: theame, date: date, page: page)
         }
     }
     

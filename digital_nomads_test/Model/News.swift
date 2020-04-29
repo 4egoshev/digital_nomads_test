@@ -41,4 +41,13 @@ struct News: JSONDecodable {
             self.imageUrl = URL(string: urlString)
         }
     }
+    
+    static func serializeJSON(theame: String, date: Date, page: Int) -> [String : Any] {
+        let from = Utilitis.createString(from: date)
+        return ["q"      : theame,
+                "from"   : from,
+                "sortBy" : "publishedAt",
+                "apiKey" : Constant.apiKey,
+                "page"   : "\(page)"]
+    }
 }

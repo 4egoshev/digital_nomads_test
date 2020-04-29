@@ -8,6 +8,7 @@
 
 import ReactiveSwift
 import Result
+import Alamofire
 
 class NewsViewModel: BaseViewModel {
     
@@ -15,8 +16,11 @@ class NewsViewModel: BaseViewModel {
     private let reloadTableViewObserver: Signal<(), NoError>.Observer
     
     private var news = [News]()
+    
+    private let networker: Networker<NewsRouter>
 
-    override init() {
+    init(networker: Networker<NewsRouter> = Networker<NewsRouter>()) {
+        self.networker = networker
         (reloadTableView, reloadTableViewObserver) = Signal.pipe()
         super.init()
         request()
@@ -38,12 +42,10 @@ extension NewsViewModel {
 //MARK: - Request
 private extension NewsViewModel {
     func request() {
-        let request: Router = .getNews(theame: "apple", date: Date(), page: 1)
-        Networker.shared.sendRequest(request, success: { [weak self] (response: Articles<News>) in
+        let request: NewsRouter = .getNews(theame: "today", page: 1)
+        networker.sendRequest(request, success: { [weak self] (response: Articles<News>) in
             self?.news.append(contentsOf: response.items)
             self?.reloadTableViewObserver.send(value: ())
-        }) { (error) in
-            print(error?.localizedDescription ?? "")
-        }
+        })
     }
 }

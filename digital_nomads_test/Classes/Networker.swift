@@ -13,18 +13,14 @@ protocol JSONDecodable {
     init(json: JSON)
 }
 
-class Networker {
-    static var shared = Networker()
-    
-    typealias FailureCompletion = (Error) -> Void
-    
+class Networker<URLRequestConvertible> {
     private var isLogEnable = false
     
     private let queue = DispatchQueue(label: "com.test.request",
                                       qos: .default,
                                       attributes: .concurrent)
     
-    func sendRequest<T: JSONDecodable>(_ urlRequest: Router,
+    func sendRequest<T: JSONDecodable>(_ urlRequest: NewsRouter,
                                        success: @escaping (T) -> Void,
                                        failure: ((Error?) -> Void)? = nil) {
         request(urlRequest).validate().responseJSON(queue: queue, options: .allowFragments, completionHandler: { (response) in
@@ -35,7 +31,11 @@ class Networker {
                 let object = T(json: json)
                 success(object)
             case .failure(let error):
-                failure?(error)
+                guard failure == nil else {
+                    failure?(error)
+                    return
+                }
+                //TODO: handle error
             }
         })
     }

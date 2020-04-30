@@ -199,8 +199,8 @@
 			children = (
 				072FA25D2456173200F8DEB2 /* Cell */,
 				07F4CC1A2455E96C0040B041 /* ViewModel */,
-				072FA2592456167000F8DEB2 /* NewsController.swift */,
 				07AA0404245AD30800E44750 /* NewsDataProvider.swift */,
+				072FA2592456167000F8DEB2 /* NewsController.swift */,
 				072FA25A2456167000F8DEB2 /* NewsController.xib */,
 			);
 			path = NewsController;

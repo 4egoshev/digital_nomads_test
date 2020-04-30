@@ -17,6 +17,9 @@ class NewsViewModel: BaseViewModel {
     let refreshing: Signal<Bool, NoError>
     private let refreshingObserver: Signal<Bool, NoError>.Observer
     
+    let placeholderHidden: Signal<Bool, NoError>
+    private let placeholderHiddenObserver: Signal<Bool, NoError>.Observer
+    
     let loading: Signal<Bool, NoError>
     private let loadingObserver: Signal<Bool, NoError>.Observer
     
@@ -43,6 +46,7 @@ class NewsViewModel: BaseViewModel {
         
         (reloadTableView, reloadTableViewObserver) = Signal.pipe()
         (refreshing, refreshingObserver) = Signal.pipe()
+        (placeholderHidden, placeholderHiddenObserver) = Signal.pipe()
         (loading, loadingObserver) = Signal.pipe()
         
         super.init()
@@ -97,6 +101,7 @@ extension NewsViewModel {
     func request(page: Int = 1, theme: String = "news") {
         self.theme = !theme.isEmpty ? theme : "news"
         loadingObserver.send(value: true)
+        self.placeholderHiddenObserver.send(value: true)
         let request: NewsRouter = .getNews(theame: self.theme, page: page)
         networker.sendRequest(request, success: { [weak self] (response: Articles<News>) in
             guard let self = self else { return }
@@ -105,8 +110,10 @@ extension NewsViewModel {
             self.reloadTableViewObserver.send(value: ())
             self.refreshingObserver.send(value: false)
             self.loadingObserver.send(value: false)
+            self.placeholderHiddenObserver.send(value: !self.news.isEmpty)
         }) { (error) in
             self.refreshingObserver.send(value: false)
+            self.placeholderHiddenObserver.send(value: !self.news.isEmpty)
         }
     }
 }

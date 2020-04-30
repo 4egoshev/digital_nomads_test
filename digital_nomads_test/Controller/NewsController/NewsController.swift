@@ -14,6 +14,7 @@ import ReactiveSwift
 class NewsController: BaseController {
 
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var placeholderLabel: UILabel!
     
     @IBOutlet private var dataProvider: NewsDataProvider!
     
@@ -42,6 +43,7 @@ class NewsController: BaseController {
     private func bind() {
         tableView.reactive.reloadData <~ viewModel.reloadTableView
         tableView.refreshControl?.reactive.isRefreshing <~ viewModel.refreshing
+        placeholderLabel.reactive.isHidden <~ viewModel.placeholderHidden
         loading <~ viewModel.loading
     }
 }

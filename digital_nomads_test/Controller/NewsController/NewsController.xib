@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewsController" customModule="digital_nomads_test" customModuleProvider="target">
             <connections>
                 <outlet property="dataProvider" destination="uhW-7G-l8D" id="tke-OL-UQU"/>
+                <outlet property="placeholderLabel" destination="Abs-ig-Mww" id="TtD-E8-OQv"/>
                 <outlet property="tableView" destination="D3z-Kp-L8h" id="58H-dO-pUP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -28,13 +29,21 @@
                         <outlet property="delegate" destination="uhW-7G-l8D" id="mRG-aO-zrr"/>
                     </connections>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No News" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abs-ig-Mww">
+                    <rect key="frame" x="172.5" y="437.5" width="69" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="D3z-Kp-L8h" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="1gl-3B-eMZ"/>
+                <constraint firstItem="Abs-ig-Mww" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="OJB-Us-HhM"/>
                 <constraint firstAttribute="bottom" secondItem="D3z-Kp-L8h" secondAttribute="bottom" id="WyY-Wk-WpZ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="D3z-Kp-L8h" secondAttribute="trailing" id="XeB-kB-mpr"/>
                 <constraint firstItem="D3z-Kp-L8h" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="wTx-ln-Hxg"/>
+                <constraint firstItem="Abs-ig-Mww" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="wwD-ln-Kfd"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="139" y="90"/>

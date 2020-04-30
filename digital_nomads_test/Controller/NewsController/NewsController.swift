@@ -45,6 +45,7 @@ class NewsController: BaseController {
         tableView.refreshControl?.reactive.isRefreshing <~ viewModel.refreshing
         placeholderLabel.reactive.isHidden <~ viewModel.placeholderHidden
         loading <~ viewModel.loading
+        navigationController?.reactive.pushViewController(animated: true) <~ viewModel.pushViewController
     }
 }
 

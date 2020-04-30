@@ -23,7 +23,7 @@ class AppFlowCoordinator {
         let viewModel = NewsViewModel(news: news)
         let controller = NewsController(viewModel: viewModel)
         
-        self.reachability = try? Reachability(hostname: "www.google.com")
+        reachability = try? Reachability(hostname: "www.google.com")
         
         window.makeKeyAndVisible()
         window.rootViewController = UINavigationController(rootViewController: controller)

@@ -33,6 +33,7 @@ extension NewsDataProvider: UITableViewDataSource {
 extension NewsDataProvider: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+        viewModel.didSelectRow(at: indexPath)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

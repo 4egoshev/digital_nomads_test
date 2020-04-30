@@ -23,6 +23,9 @@ class NewsViewModel: BaseViewModel {
     let loading: Signal<Bool, NoError>
     private let loadingObserver: Signal<Bool, NoError>.Observer
     
+    let pushViewController: Signal<UIViewController, NoError>
+    private let pushViewControllerObserver: Signal<UIViewController, NoError>.Observer
+    
     private let prefetchCount = 5
     private var currentPage = 1
     private var pageSize = 0
@@ -48,6 +51,7 @@ class NewsViewModel: BaseViewModel {
         (refreshing, refreshingObserver) = Signal.pipe()
         (placeholderHidden, placeholderHiddenObserver) = Signal.pipe()
         (loading, loadingObserver) = Signal.pipe()
+        (pushViewController, pushViewControllerObserver) = Signal.pipe()
         
         super.init()
         setupPageSize()
@@ -65,11 +69,15 @@ class NewsViewModel: BaseViewModel {
 }
 
 //MARK: - Reactive
-extension NewsViewModel {
+private extension NewsViewModel {
     var update: BindingTarget<UpdateEvent> {
         return BindingTarget(lifetime: lifetime) { [weak self] (event) in
             guard let self = self else { return }
-            self.request(page: self.currentPage, theme: self.theme)
+            switch event {
+            case .online(let online):
+                guard online else { return }
+                self.request(page: self.currentPage, theme: self.theme)
+            }
         }
     }
 }
@@ -83,6 +91,13 @@ extension NewsViewModel {
     func cellModel(at indexPath: IndexPath) -> NewsCell.Model? {
         let currentNews = news[indexPath.row]
         return NewsCell.Model(title: currentNews.title, description: currentNews.descript, imageUrlString: currentNews.imageUrlString)
+    }
+    
+    func didSelectRow(at indexPath: IndexPath) {
+        guard let urlString = news[indexPath.row].urlString, let url = URL(string: urlString) else { return }
+        let viewModel = NewsDetailViewModel(url: url)
+        let controller = NewsDetailController(viewModel: viewModel)
+        pushViewControllerObserver.send(value: controller)
     }
     
     func willDisplayCell(at indexPath: IndexPath) {

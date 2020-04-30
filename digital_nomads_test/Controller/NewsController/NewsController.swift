@@ -30,6 +30,7 @@ class NewsController: BaseController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupSearchBar()
         setupTableView()
         setupLoadIndicator()
         bind()
@@ -44,6 +45,17 @@ class NewsController: BaseController {
 
 //MARK: - Setup
 private extension NewsController {
+    func setupSearchBar() {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        searchController.searchBar.tintColor = .white
+        
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = true
+    }
+    
     func setupTableView() {
         tableView.tableFooterView = UIView()
         tableView.registerNib(for: NewsCell.self)
@@ -100,5 +112,13 @@ extension NewsController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         viewModel.willDisplayCell(at: indexPath)
+    }
+}
+
+//MARK: - NewsController
+extension NewsController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else { return }
+        viewModel.request(theame: text)
     }
 }

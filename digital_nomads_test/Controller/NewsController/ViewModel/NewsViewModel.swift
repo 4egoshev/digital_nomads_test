@@ -23,6 +23,7 @@ class NewsViewModel: BaseViewModel {
     private let prefetchCount = 1
     private var currentPage = 1
     private var pageSize = 0
+    private var theame = "news"
     
     private var news = [News]()
     
@@ -61,15 +62,16 @@ extension NewsViewModel {
 //MARK: - Request
 extension NewsViewModel {
     func refreshNews() {
-        request(refresh: true)
+        request(theame: theame)
     }
     
-    private func request(page: Int = 1, refresh: Bool = false) {
+    func request(page: Int = 1, theame: String = "news") {
+        self.theame = !theame.isEmpty ? theame : "news"
         loadingObserver.send(value: true)
-        let request: NewsRouter = .getNews(theame: "news", page: page)
+        let request: NewsRouter = .getNews(theame: self.theame, page: page)
         networker.sendRequest(request, success: { [weak self] (response: Articles<News>) in
             guard let self = self else { return }
-            refresh ? self.news = response.items : self.news.append(contentsOf: response.items)
+            page == 1 ? self.news = response.items : self.news.append(contentsOf: response.items)
             if self.pageSize == 0 { self.pageSize = self.news.count }
             self.reloadTableViewObserver.send(value: ())
             self.refreshingObserver.send(value: false)

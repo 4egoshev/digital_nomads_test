@@ -16,9 +16,14 @@ class AppFlowCoordinator {
     }
     
     func start() {
-        window.makeKeyAndVisible()
-        let viewModel = NewsViewModel()
+        let dataBase = NewsDataBase()
+        let news = dataBase.getNews()
+        print("news = \(news.count)")
+        
+        let viewModel = NewsViewModel(news: news)
         let controller = NewsController(viewModel: viewModel)
+        
+        window.makeKeyAndVisible()
         window.rootViewController = UINavigationController(rootViewController: controller)
     }
 }

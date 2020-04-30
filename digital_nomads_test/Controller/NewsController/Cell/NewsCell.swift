@@ -18,14 +18,14 @@ class NewsCell: UITableViewCell {
     struct Model {
         let title: String?
         let description: String?
-        let imageUrl: URL?
+        let imageUrlString: String?
     }
     
     var model: Model? {
         didSet {
             titleLabel.text = model?.title
             descriptionLabel.text = model?.description
-            guard let url = model?.imageUrl else { return }
+            guard let imageUrlString = model?.imageUrlString, let url = URL(string: imageUrlString) else { return }
             photo.af_setImage(withURL: url, placeholderImage: Image.placeholder)
         }
     }

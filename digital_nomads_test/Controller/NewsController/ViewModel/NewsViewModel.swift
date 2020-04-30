@@ -25,19 +25,33 @@ class NewsViewModel: BaseViewModel {
     private var pageSize = 0
     private var theame = "news"
     
-    private var news = [News]()
+    private var news = [News]() {
+        willSet {
+            dataBase.update(news: newValue)
+        }
+    }
     
     private let networker: Networker<NewsRouter>
+    private let dataBase: NewsDataBase
 
-    init(networker: Networker<NewsRouter> = Networker<NewsRouter>()) {
+    init(news: [News],
+         networker: Networker<NewsRouter> = Networker<NewsRouter>(),
+         dataBase: NewsDataBase = NewsDataBase()) {
+        self.news = news
         self.networker = networker
+        self.dataBase = dataBase
         
         (reloadTableView, reloadTableViewObserver) = Signal.pipe()
         (refreshing, refreshingObserver) = Signal.pipe()
         (loading, loadingObserver) = Signal.pipe()
         
         super.init()
+        setupPageSize()
         request()
+    }
+    
+    private func setupPageSize() {
+        pageSize = !news.isEmpty ? news.count : 20
     }
 }
 
@@ -49,7 +63,7 @@ extension NewsViewModel {
     
     func cellModel(at indexPath: IndexPath) -> NewsCell.Model? {
         let currentNews = news[indexPath.row]
-        return NewsCell.Model(title: currentNews.title, description: currentNews.description, imageUrl: currentNews.imageUrl)
+        return NewsCell.Model(title: currentNews.title, description: currentNews.descript, imageUrlString: currentNews.imageUrlString)
     }
     
     func willDisplayCell(at indexPath: IndexPath) {

@@ -27,8 +27,7 @@ class Networker<URLRequestConvertible> {
             self.logResponse(response)
             switch response.result {
             case .success(let data):
-                let json = JSON(data)
-                let object = T(json: json)
+                let object = T(json: JSON(data))
                 success(object)
             case .failure(let error):
                 guard failure == nil else {

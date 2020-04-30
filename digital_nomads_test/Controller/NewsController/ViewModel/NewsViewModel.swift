@@ -20,7 +20,7 @@ class NewsViewModel: BaseViewModel {
     let loading: Signal<Bool, NoError>
     private let loadingObserver: Signal<Bool, NoError>.Observer
     
-    private let prefetchCount = 1
+    private let prefetchCount = 5
     private var currentPage = 1
     private var pageSize = 0
     private var theame = "news"

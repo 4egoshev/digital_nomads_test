@@ -15,6 +15,8 @@ class NewsController: BaseController {
 
     @IBOutlet private weak var tableView: UITableView!
     
+    @IBOutlet private var dataProvider: NewsDataProvider!
+    
     private var loadIndicator: UIActivityIndicatorView!
     
     private let viewModel: NewsViewModel
@@ -32,6 +34,7 @@ class NewsController: BaseController {
         super.viewDidLoad()
         setupSearchBar()
         setupTableView()
+        setupKeyboardHandler()
         setupLoadIndicator()
         bind()
     }
@@ -50,19 +53,24 @@ private extension NewsController {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
-        searchController.searchBar.tintColor = .white
         
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = true
     }
     
     func setupTableView() {
+        dataProvider.viewModel = viewModel
+        
         tableView.tableFooterView = UIView()
         tableView.registerNib(for: NewsCell.self)
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshNews), for: .valueChanged)
         tableView.refreshControl = refreshControl
+    }
+    
+    func setupKeyboardHandler() {
+        keyboardHandler.setup(scrollView: tableView, mainView: navigationItem.searchController?.searchBar)
     }
     
     func setupLoadIndicator() {
@@ -88,30 +96,6 @@ private extension NewsController {
 private extension NewsController {
     @objc func refreshNews() {
         viewModel.refreshNews()
-    }
-}
-
-//MARK: - UITableViewDataSource
-extension NewsController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfRows(in: section)
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueCell(cellClass: NewsCell.self, for: indexPath)
-        cell.model = viewModel.cellModel(at: indexPath)
-        return cell
-    }
-}
-
-//MARK: - UITableViewDelegate
-extension NewsController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        viewModel.willDisplayCell(at: indexPath)
     }
 }
 

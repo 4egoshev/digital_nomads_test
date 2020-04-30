@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewsController" customModule="digital_nomads_test" customModuleProvider="target">
             <connections>
+                <outlet property="dataProvider" destination="uhW-7G-l8D" id="tke-OL-UQU"/>
                 <outlet property="tableView" destination="D3z-Kp-L8h" id="58H-dO-pUP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -23,8 +24,8 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="Z6Z-oK-qPT"/>
-                        <outlet property="delegate" destination="-1" id="dpO-oL-ZLr"/>
+                        <outlet property="dataSource" destination="uhW-7G-l8D" id="3By-ts-CO3"/>
+                        <outlet property="delegate" destination="uhW-7G-l8D" id="mRG-aO-zrr"/>
                     </connections>
                 </tableView>
             </subviews>
@@ -38,5 +39,6 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="139" y="90"/>
         </view>
+        <customObject id="uhW-7G-l8D" customClass="NewsDataProvider" customModule="digital_nomads_test" customModuleProvider="target"/>
     </objects>
 </document>

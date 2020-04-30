@@ -17,6 +17,8 @@
 		07AA0407245AE10F00E44750 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AA0406245AE10F00E44750 /* KeyboardHandler.swift */; };
 		07AA0409245AF60A00E44750 /* NewsRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AA0408245AF60A00E44750 /* NewsRealm.swift */; };
 		07AA040B245AF8A000E44750 /* NewsDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AA040A245AF8A000E44750 /* NewsDataBase.swift */; };
+		07AA040D245B01DD00E44750 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AA040C245B01DD00E44750 /* Reachability.swift */; };
+		07AA040F245B039900E44750 /* UpdateCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AA040E245B039900E44750 /* UpdateCenter.swift */; };
 		07F4CBF32455E3F70040B041 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F4CBF22455E3F70040B041 /* AppDelegate.swift */; };
 		07F4CBFC2455E3F80040B041 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07F4CBFB2455E3F80040B041 /* Assets.xcassets */; };
 		07F4CBFF2455E3F80040B041 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07F4CBFD2455E3F80040B041 /* LaunchScreen.storyboard */; };
@@ -58,6 +60,8 @@
 		07AA0406245AE10F00E44750 /* KeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
 		07AA0408245AF60A00E44750 /* NewsRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRealm.swift; sourceTree = "<group>"; };
 		07AA040A245AF8A000E44750 /* NewsDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDataBase.swift; sourceTree = "<group>"; };
+		07AA040C245B01DD00E44750 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		07AA040E245B039900E44750 /* UpdateCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCenter.swift; sourceTree = "<group>"; };
 		07AFDFEE245611CB0098185C /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07AFDFF0245611CB0098185C /* AlamofireImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlamofireImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07AFDFF2245611CB0098185C /* ErrorDispatcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ErrorDispatcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +171,8 @@
 				07F4CC1F2455F0070040B041 /* Networker.swift */,
 				07F4CC242455F3E20040B041 /* NewsRouter.swift */,
 				07AA0406245AE10F00E44750 /* KeyboardHandler.swift */,
+				07AA040E245B039900E44750 /* UpdateCenter.swift */,
+				07AA040C245B01DD00E44750 /* Reachability.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -384,7 +390,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				07F4CC1C2455E9840040B041 /* NewsViewModel.swift in Sources */,
+				07AA040F245B039900E44750 /* UpdateCenter.swift in Sources */,
 				072FA25B2456167000F8DEB2 /* NewsController.swift in Sources */,
+				07AA040D245B01DD00E44750 /* Reachability.swift in Sources */,
 				07F4CC232455F2E20040B041 /* News.swift in Sources */,
 				07F4CC102455E6E20040B041 /* AppFlowCoordinator.swift in Sources */,
 				07F4CC252455F3E20040B041 /* NewsRouter.swift in Sources */,

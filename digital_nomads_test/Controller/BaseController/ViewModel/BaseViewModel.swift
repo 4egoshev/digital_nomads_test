@@ -6,8 +6,9 @@
 //  Copyright © 2020 Aleksandr Chegoshev. All rights reserved.
 //
 
-import Foundation
+import ReactiveSwift
 
 class BaseViewModel {
-
+    // MARK: Reactive
+    let (lifetime, token) = Lifetime.make()
 }

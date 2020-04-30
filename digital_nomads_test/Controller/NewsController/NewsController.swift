@@ -103,6 +103,6 @@ private extension NewsController {
 extension NewsController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else { return }
-        viewModel.request(theame: text)
+        viewModel.request(theme: text)
     }
 }

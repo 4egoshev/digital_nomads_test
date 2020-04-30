@@ -9,6 +9,8 @@
 import UIKit
 
 class AppFlowCoordinator {
+    private var reachability: Reachability?
+    
     var window: UIWindow
     
     init(window: UIWindow) {
@@ -18,10 +20,10 @@ class AppFlowCoordinator {
     func start() {
         let dataBase = NewsDataBase()
         let news = dataBase.getNews()
-        print("news = \(news.count)")
-        
         let viewModel = NewsViewModel(news: news)
         let controller = NewsController(viewModel: viewModel)
+        
+        self.reachability = try? Reachability(hostname: "www.google.com")
         
         window.makeKeyAndVisible()
         window.rootViewController = UINavigationController(rootViewController: controller)

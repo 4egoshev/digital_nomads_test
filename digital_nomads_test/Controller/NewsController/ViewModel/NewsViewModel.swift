@@ -23,7 +23,7 @@ class NewsViewModel: BaseViewModel {
     private let prefetchCount = 5
     private var currentPage = 1
     private var pageSize = 0
-    private var theame = "news"
+    private var theme = "news"
     
     private var news = [News]() {
         willSet {
@@ -48,10 +48,25 @@ class NewsViewModel: BaseViewModel {
         super.init()
         setupPageSize()
         request()
+        bind()
     }
     
     private func setupPageSize() {
         pageSize = !news.isEmpty ? news.count : 20
+    }
+    
+    private func bind() {
+        update <~ app.updateCenter.update
+    }
+}
+
+//MARK: - Reactive
+extension NewsViewModel {
+    var update: BindingTarget<UpdateEvent> {
+        return BindingTarget(lifetime: lifetime) { [weak self] (event) in
+            guard let self = self else { return }
+            self.request(page: self.currentPage, theme: self.theme)
+        }
     }
 }
 
@@ -76,13 +91,13 @@ extension NewsViewModel {
 //MARK: - Request
 extension NewsViewModel {
     func refreshNews() {
-        request(theame: theame)
+        request(theme: theme)
     }
     
-    func request(page: Int = 1, theame: String = "news") {
-        self.theame = !theame.isEmpty ? theame : "news"
+    func request(page: Int = 1, theme: String = "news") {
+        self.theme = !theme.isEmpty ? theme : "news"
         loadingObserver.send(value: true)
-        let request: NewsRouter = .getNews(theame: self.theame, page: page)
+        let request: NewsRouter = .getNews(theame: self.theme, page: page)
         networker.sendRequest(request, success: { [weak self] (response: Articles<News>) in
             guard let self = self else { return }
             page == 1 ? self.news = response.items : self.news.append(contentsOf: response.items)

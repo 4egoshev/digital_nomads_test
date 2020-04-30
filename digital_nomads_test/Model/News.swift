@@ -32,6 +32,7 @@ struct News: JSONDecodable {
         self.description = json["description"].string
         self.author = json["author"].string
         self.content = json["content"].string
+        
         self.date = Utilitis.createDate(from: json["publishedAt"].string)
         
         if let urlString = json["url"].string {

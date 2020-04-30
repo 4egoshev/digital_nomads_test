@@ -56,3 +56,14 @@ extension NewsController: UITableViewDataSource {
         return cell
     }
 }
+
+//MARK: - UITableViewDelegate
+extension NewsController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        viewModel.willDisplayCell(at: indexPath)
+    }
+}

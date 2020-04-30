@@ -19,6 +19,10 @@ class Utilitis {
     static func createString(from date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        return formatter.string(from: date)
+        var dayComponent = DateComponents()
+        dayComponent.day = -1
+        guard let yesterday = Calendar.current.date(byAdding: dayComponent, to: date) else { return "" }
+        return formatter.string(from: yesterday)
+
     }
 }

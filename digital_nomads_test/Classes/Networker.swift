@@ -14,7 +14,7 @@ protocol JSONDecodable {
 }
 
 class Networker<URLRequestConvertible> {
-    private var isLogEnable = false
+    private var isLogEnable = true
     
     private let queue = DispatchQueue(label: "com.test.request",
                                       qos: .default,
@@ -22,7 +22,7 @@ class Networker<URLRequestConvertible> {
     
     func sendRequest<T: JSONDecodable>(_ urlRequest: NewsRouter,
                                        success: @escaping (T) -> Void,
-                                       failure: ((Error?) -> Void)? = nil) {
+                                       failure: ((Error) -> Void)? = nil) {
         request(urlRequest).validate().responseJSON(queue: queue, options: .allowFragments, completionHandler: { (response) in
             self.logResponse(response)
             switch response.result {

@@ -8,12 +8,14 @@
 
 import ReactiveSwift
 import Result
-import Alamofire
 
 class NewsViewModel: BaseViewModel {
     
     let reloadTableView: Signal<(), NoError>
     private let reloadTableViewObserver: Signal<(), NoError>.Observer
+    
+    private let prefetchCount = 5
+    private var pageSize = 0
     
     private var news = [News]()
     
@@ -37,15 +39,22 @@ extension NewsViewModel {
         let currentNews = news[indexPath.row]
         return NewsCell.Model(title: currentNews.title, description: currentNews.description, imageUrl: currentNews.imageUrl)
     }
+    
+    func willDisplayCell(at indexPath: IndexPath) {
+        guard indexPath.row >= news.count - prefetchCount else { return }
+        request(page: news.count / pageSize + 1)
+    }
 }
 
 //MARK: - Request
 private extension NewsViewModel {
-    func request() {
-        let request: NewsRouter = .getNews(theame: "today", page: 1)
+    func request(page: Int = 1) {
+        let request: NewsRouter = .getNews(theame: "news", page: page)
         networker.sendRequest(request, success: { [weak self] (response: Articles<News>) in
-            self?.news.append(contentsOf: response.items)
-            self?.reloadTableViewObserver.send(value: ())
+            guard let self = self else { return }
+            self.news.append(contentsOf: response.items)
+            if self.pageSize == 0 { self.pageSize = self.news.count }
+            self.reloadTableViewObserver.send(value: ())
         })
     }
 }

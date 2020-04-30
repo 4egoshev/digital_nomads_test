@@ -15,6 +15,8 @@ class NewsController: BaseController {
 
     @IBOutlet private weak var tableView: UITableView!
     
+    private var loadIndicator: UIActivityIndicatorView!
+    
     private let viewModel: NewsViewModel
     
     init(viewModel: NewsViewModel) {
@@ -29,18 +31,51 @@ class NewsController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        setupLoadIndicator()
         bind()
     }
     
     private func bind() {
         tableView.reactive.reloadData <~ viewModel.reloadTableView
+        tableView.refreshControl?.reactive.isRefreshing <~ viewModel.refreshing
+        loading <~ viewModel.loading
     }
 }
 
 //MARK: - Setup
 private extension NewsController {
     func setupTableView() {
+        tableView.tableFooterView = UIView()
         tableView.registerNib(for: NewsCell.self)
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshNews), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+    }
+    
+    func setupLoadIndicator() {
+        loadIndicator = UIActivityIndicatorView(style: .gray)
+        loadIndicator.startAnimating()
+        loadIndicator.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 44)
+    }
+}
+
+//MARK: - Reactive
+private extension NewsController {
+    var loading: BindingTarget<Bool> {
+        return BindingTarget(lifetime: lifetime) { [weak self] (isLoading) in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.tableView.tableFooterView = isLoading ? self.loadIndicator : UIView()
+            }
+        }
+    }
+}
+
+//MARK: - Action
+private extension NewsController {
+    @objc func refreshNews() {
+        viewModel.refreshNews()
     }
 }
 

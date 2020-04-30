@@ -14,7 +14,14 @@ class NewsViewModel: BaseViewModel {
     let reloadTableView: Signal<(), NoError>
     private let reloadTableViewObserver: Signal<(), NoError>.Observer
     
-    private let prefetchCount = 5
+    let refreshing: Signal<Bool, NoError>
+    private let refreshingObserver: Signal<Bool, NoError>.Observer
+    
+    let loading: Signal<Bool, NoError>
+    private let loadingObserver: Signal<Bool, NoError>.Observer
+    
+    private let prefetchCount = 1
+    private var currentPage = 1
     private var pageSize = 0
     
     private var news = [News]()
@@ -23,7 +30,11 @@ class NewsViewModel: BaseViewModel {
 
     init(networker: Networker<NewsRouter> = Networker<NewsRouter>()) {
         self.networker = networker
+        
         (reloadTableView, reloadTableViewObserver) = Signal.pipe()
+        (refreshing, refreshingObserver) = Signal.pipe()
+        (loading, loadingObserver) = Signal.pipe()
+        
         super.init()
         request()
     }
@@ -41,20 +52,30 @@ extension NewsViewModel {
     }
     
     func willDisplayCell(at indexPath: IndexPath) {
-        guard indexPath.row >= news.count - prefetchCount else { return }
-        request(page: news.count / pageSize + 1)
+        guard indexPath.row >= news.count - prefetchCount, currentPage == news.count / pageSize else { return }
+        currentPage = news.count / pageSize + 1
+        request(page: currentPage)
     }
 }
 
 //MARK: - Request
-private extension NewsViewModel {
-    func request(page: Int = 1) {
+extension NewsViewModel {
+    func refreshNews() {
+        request(refresh: true)
+    }
+    
+    private func request(page: Int = 1, refresh: Bool = false) {
+        loadingObserver.send(value: true)
         let request: NewsRouter = .getNews(theame: "news", page: page)
         networker.sendRequest(request, success: { [weak self] (response: Articles<News>) in
             guard let self = self else { return }
-            self.news.append(contentsOf: response.items)
+            refresh ? self.news = response.items : self.news.append(contentsOf: response.items)
             if self.pageSize == 0 { self.pageSize = self.news.count }
             self.reloadTableViewObserver.send(value: ())
-        })
+            self.refreshingObserver.send(value: false)
+            self.loadingObserver.send(value: false)
+        }) { (error) in
+            self.refreshingObserver.send(value: false)
+        }
     }
 }

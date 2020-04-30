@@ -14,7 +14,7 @@ protocol JSONDecodable {
 }
 
 class Networker<URLRequestConvertible> {
-    private var isLogEnable = true
+    private var isLogEnable = false
     
     private let queue = DispatchQueue(label: "com.test.request",
                                       qos: .default,

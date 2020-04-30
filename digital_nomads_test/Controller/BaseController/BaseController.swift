@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import ReactiveSwift
 
 class BaseController: UIViewController {
+    
+    // MARK: Reactive
+    let (lifetime, token) = Lifetime.make()
     
     init() {
         super.init(nibName: nil, bundle: nil)

@@ -26,7 +26,7 @@ class NewsCell: UITableViewCell {
             titleLabel.text = model?.title
             descriptionLabel.text = model?.description
             guard let imageUrlString = model?.imageUrlString, let url = URL(string: imageUrlString) else { return }
-            photo.af_setImage(withURL: url, placeholderImage: Image.placeholder)
+            photo.af_setImage(withURL: url, placeholderImage: Image.News.placeholder)
         }
     }
 }

@@ -151,6 +151,16 @@
 			path = Handler;
 			sourceTree = "<group>";
 		};
+		07AA041D245B17D800E44750 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				07F4CC1F2455F0070040B041 /* Networker.swift */,
+				07F4CC242455F3E20040B041 /* NewsRouter.swift */,
+				07AA040C245B01DD00E44750 /* Reachability.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		07F4CBE62455E3F70040B041 = {
 			isa = PBXGroup;
 			children = (
@@ -206,10 +216,8 @@
 			isa = PBXGroup;
 			children = (
 				07F4CC0F2455E6E20040B041 /* AppFlowCoordinator.swift */,
-				07F4CC1F2455F0070040B041 /* Networker.swift */,
-				07F4CC242455F3E20040B041 /* NewsRouter.swift */,
 				07AA040E245B039900E44750 /* UpdateCenter.swift */,
-				07AA040C245B01DD00E44750 /* Reachability.swift */,
+				07AA041D245B17D800E44750 /* Network */,
 				07AA041A245B162D00E44750 /* Handler */,
 			);
 			path = Classes;

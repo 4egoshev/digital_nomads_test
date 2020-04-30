@@ -9,7 +9,9 @@
 import UIKit
 
 struct Image {
-    static var placeholder: UIImage {
-        return #imageLiteral(resourceName: "placeholder")
+    struct News {
+        static var placeholder: UIImage {
+            return #imageLiteral(resourceName: "placeholder")
+        }
     }
 }

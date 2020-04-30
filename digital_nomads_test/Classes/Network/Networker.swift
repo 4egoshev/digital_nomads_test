@@ -23,7 +23,7 @@ class Networker<URLRequestConvertible> {
     func sendRequest<T: JSONDecodable>(_ urlRequest: NewsRouter,
                                        success: @escaping (T) -> Void,
                                        failure: ((Error) -> Void)? = nil) {
-        request(urlRequest).validate().responseJSON(queue: queue, options: .allowFragments, completionHandler: { (response) in
+        request(urlRequest).validate(statusCode: 200..<500).responseJSON(queue: queue, options: .allowFragments, completionHandler: { (response) in
             self.logResponse(response)
             switch response.result {
             case .success(let data):
